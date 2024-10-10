@@ -8,7 +8,7 @@
     android:background="#EDE499"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="20dp"
     tools:context=".PantallaPrincipal">
 
     <TextView
@@ -26,21 +26,21 @@
         android:background="#F0E68B"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="10dp">
+        >
 
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnInscribir"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Inscribir" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnAsigActividad"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Asignar Actividad" />
 
     </LinearLayout>
@@ -53,17 +53,17 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnPagarCuota"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Pagar Cuota" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnEmitirComprobante"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Emitir Comprobante" />
 
     </LinearLayout>
@@ -76,17 +76,17 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnEmitirCarnet"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Emitir Carnet" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btnMorosos"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Morosos" />
 
     </LinearLayout>
@@ -99,10 +99,10 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btnSalir"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:text="Salir" />
 
     </LinearLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDE499"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".PantallaInscripciones">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="Club Deportivo"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Inscripción"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EFEEE7"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EFEEE7"
+        android:hint="Apellido"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EFEEE7"
+        android:hint="DNI"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EFEEE7"
+        android:hint="Dirección"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EFEEE7"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textSize="15sp"
+        android:padding="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <RadioGroup
+        android:id="@+id/rgOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/rbSocio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Socio" />
+
+        <RadioButton
+            android:id="@+id/rbNoSocio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="No Socio" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkAptoFisico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apto Físico"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EDE499"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:text="Ingresar" />
+
+        <Button
+            android:id="@+id/btnLimpiar"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:text="Limpiar" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="110dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:text="Volver" />
+
+    </LinearLayout>
+
+</LinearLayout>

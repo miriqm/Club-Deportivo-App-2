@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ClubDeportivoApp"
         tools:targetApi="31">
         <activity
+            android:name=".PantallaInscripciones"
+            android:exported="false" />
+        <activity
             android:name=".PantallaPrincipal"
             android:exported="false" />
         <activity

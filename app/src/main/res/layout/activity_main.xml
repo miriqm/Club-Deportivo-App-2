@@ -5,21 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2E88B"
+    android:background="#EDE499"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/clubDeportivo" />
+        tools:srcCompat="@drawable/club_deportivo" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="255dp"
+        android:layout_height="257dp"
         android:gravity="center"
         android:orientation="vertical">
 
