@@ -17,16 +17,24 @@ class PantallaPrincipal : AppCompatActivity() {
         setContentView(activity_pantalla_principal)
         val btnInscribir = findViewById<Button>(btnInscribir)
 
+        val btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota) //se debe importar una clase para capturar el boton
+
+
         btnInscribir.setOnClickListener {
             val intent = Intent(this, PantallaInscripciones::class.java)
             startActivity(intent)
         }
+
         val btnSalir = findViewById<Button>(btnSalir)
         btnSalir.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
+        btnPagarCuota.setOnClickListener {
+            val intent = Intent(this, PantallaPagoActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }

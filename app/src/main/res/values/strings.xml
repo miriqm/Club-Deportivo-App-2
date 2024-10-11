@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ClubDeportivoApp</string>
+    <!-- Tipo de Cliente -->
+    <string-array name="tipo_cliente_array">
+        <item>Socio</item>
+        <item>No socio</item>
+    </string-array>
+
+    <!-- Tipo de Cuota -->
+    <string-array name="tipo_cuota_array">
+        <item>Mensual</item>
+        <item>Diaria</item>
+    </string-array>
 </resources>
