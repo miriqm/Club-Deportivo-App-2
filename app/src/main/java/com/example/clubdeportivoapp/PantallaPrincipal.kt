@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.clubdeportivoapp.R.id.btnEmitirCarnet
 import com.example.clubdeportivoapp.R.id.btnInscribir
 import com.example.clubdeportivoapp.R.id.btnSalir
 import com.example.clubdeportivoapp.R.layout.activity_pantalla_principal
@@ -35,7 +36,11 @@ class PantallaPrincipal : AppCompatActivity() {
             val intent = Intent(this, PantallaPagoActivity::class.java)
             startActivity(intent)
         }
-
+        val btnEmitirCarnet = findViewById<Button>(btnEmitirCarnet)
+        btnEmitirCarnet.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
