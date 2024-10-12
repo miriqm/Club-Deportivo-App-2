@@ -9,20 +9,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.clubdeportivoapp.R.id.btnVolver
 
-
-class PantllaCarnet : AppCompatActivity() {
+class PantallaMorosos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_pantlla_carnet)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_pantalla_morosos)
 
         val btnVolver = findViewById<Button>(btnVolver)
 
         btnVolver.setOnClickListener {
             val intent = Intent(this, PantallaPrincipal::class.java)
             startActivity(intent)
-
         }
+
     }
 }
-

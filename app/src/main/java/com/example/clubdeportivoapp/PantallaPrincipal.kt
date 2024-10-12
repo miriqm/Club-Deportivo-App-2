@@ -19,7 +19,7 @@ class PantallaPrincipal : AppCompatActivity() {
         val btnInscribir = findViewById<Button>(btnInscribir)
 
         val btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota) //se debe importar una clase para capturar el boton
-
+        val btnMorosos = findViewById<Button>(R.id.btnMorosos)
 
         btnInscribir.setOnClickListener {
             val intent = Intent(this, PantallaInscripciones::class.java)
@@ -38,9 +38,13 @@ class PantallaPrincipal : AppCompatActivity() {
         }
         val btnEmitirCarnet = findViewById<Button>(btnEmitirCarnet)
         btnEmitirCarnet.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, PantallaCarnet::class.java)
             startActivity(intent)
         }
 
+        btnMorosos.setOnClickListener {
+            val intent = Intent(this, PantallaMorosos::class.java)
+            startActivity(intent)
+        }
     }
 }

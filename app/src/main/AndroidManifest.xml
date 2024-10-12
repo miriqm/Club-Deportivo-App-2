@@ -13,7 +13,10 @@
         android:theme="@style/Theme.ClubDeportivoApp"
         tools:targetApi="31">
         <activity
-            android:name=".PantllaCarnet"
+            android:name=".PantallaMorosos"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaCarnet"
             android:exported="false" />
         <activity
             android:name=".PantallaComprobante"
