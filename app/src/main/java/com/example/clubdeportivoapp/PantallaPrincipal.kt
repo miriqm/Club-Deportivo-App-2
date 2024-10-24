@@ -3,12 +3,10 @@ package com.example.clubdeportivoapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.clubdeportivoapp.R.id.btnEmitirCarnet
 import com.example.clubdeportivoapp.R.id.btnInscribir
+import com.example.clubdeportivoapp.R.id.btnPagarCuota
 import com.example.clubdeportivoapp.R.id.btnSalir
 import com.example.clubdeportivoapp.R.layout.activity_pantalla_principal
 
@@ -18,7 +16,7 @@ class PantallaPrincipal : AppCompatActivity() {
         setContentView(activity_pantalla_principal)
         val btnInscribir = findViewById<Button>(btnInscribir)
 
-        val btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota) //se debe importar una clase para capturar el boton
+        val btnPagarCuota = findViewById<Button>(btnPagarCuota)
         val btnMorosos = findViewById<Button>(R.id.btnMorosos)
 
         btnInscribir.setOnClickListener {

@@ -5,78 +5,81 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PantallaMorosos"
     android:background="#EDE499"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    >
+    tools:context=".PantallaMorosos">
+
     <TextView
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="30dp"
         android:text="Club Deportivo"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold" />
+
     <TextView
         android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:layout_gravity="center"
         android:layout_margin="30dp"
         android:text="Listado Socios Cuotas Vencidas"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textStyle="bold" />
     <!-- Layout Principal -->
     <LinearLayout
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
         android:layout_marginBottom="15dp"
         android:background="@color/cardview_light_background"
-        >
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
         <!-- Layout Encabezado -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:gravity="center"
                 android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="Fecha"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="48dp"
-                android:gravity="center"
                 android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="Nombre"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="48dp"
-                android:gravity="center"
                 android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="Nro Socio"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="48dp"
-                android:gravity="center"
                 android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="$ Importe"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -86,120 +89,131 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:background="#EFEEE7"
         android:layout_marginBottom="15dp"
+        android:background="#EFEEE7"
+        android:gravity="center_horizontal"
         android:minHeight="48dp"
+        android:orientation="horizontal"
         android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Fecha"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Nombre"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Nro Socio"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="$ Importe"
             android:textSize="15sp" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:background="#EFEEE7"
         android:layout_marginBottom="15dp"
+        android:background="#EFEEE7"
+        android:gravity="center_horizontal"
         android:minHeight="48dp"
+        android:orientation="horizontal"
         android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Fecha"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Nombre"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Nro Socio"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="$ Importe"
             android:textSize="15sp" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
         android:background="#EFEEE7"
+        android:gravity="center_horizontal"
         android:minHeight="48dp"
+        android:orientation="horizontal"
         android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Fecha"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Nombre"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="Nro Socio"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:gravity="center"
             android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="$ Importe"
             android:textSize="15sp" />
 
@@ -211,10 +225,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:background="#EDE499"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnVolver"
