@@ -10,6 +10,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.clubdeportivoapp.R.id.btnIngresar
+import com.example.clubdeportivoapp.R.id.btnLimpiar
 import com.example.clubdeportivoapp.R.id.btnVolver
 import com.example.clubdeportivoapp.R.id.checkAptoFisico
 import com.example.clubdeportivoapp.R.id.rbNoSocio
@@ -38,6 +39,7 @@ class PantallaInscripciones : AppCompatActivity() {
         val rgOptions = findViewById<RadioGroup>(R.id.rgOptions)
         val checkAptoFisico = findViewById<CheckBox>(R.id.checkAptoFisico)
         val btnVolver = findViewById<Button>(R.id.btnVolver)
+        val btnLimpiar = findViewById<Button>(R.id.btnLimpiar)
 
         val rbSocio = findViewById<RadioButton>(R.id.rbSocio)
         val rbNoSocio = findViewById<RadioButton>(R.id.rbNoSocio)
@@ -62,6 +64,7 @@ class PantallaInscripciones : AppCompatActivity() {
             
             val result = databaseHelper.insertarSocio(nombre, apellido, dni, direccion, email, esSocio, aptoFisico)
 
+
             if (result != (-1).toLong()) {
                 Toast.makeText(this, "Socio registrado exitosamente", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, PantallaPrincipal::class.java)
@@ -75,5 +78,15 @@ class PantallaInscripciones : AppCompatActivity() {
             val intent = Intent(this, PantallaPrincipal::class.java)
             startActivity(intent)
         }
+            btnLimpiar.setOnClickListener {
+            txtNombre.text.clear()
+            txtApellido.text.clear()
+            txtDNI.text.clear()
+            txtDireccion.text.clear()
+            txtEmail.text.clear()
+            rgOptions.clearCheck()
+            checkAptoFisico.isChecked = false
+        }
+
     }
 }
