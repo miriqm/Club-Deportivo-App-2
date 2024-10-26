@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
          databaseHelper = DatabaseHelper(this)
-         databaseHelper.insertarUsuarioAdmin()
+         databaseHelper.ingresarUsuario()
         val txtUsuario = findViewById<EditText>(txtUsuario)
         val txtPass = findViewById<EditText>(txtPass)
         val btnIngresar = findViewById<Button>(btnIngresar)

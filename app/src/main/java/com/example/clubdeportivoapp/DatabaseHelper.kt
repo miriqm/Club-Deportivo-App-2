@@ -98,15 +98,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
-
-    fun insertarUsuarioAdmin() {
+    fun ingresarUsuario() {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(DatabaseHelper.COLUMN_NOMBRE_USUARIO, "admin")
             put(DatabaseHelper.COLUMN_CONTRASENA, "1234")
         }
-        db.insert(DatabaseHelper.TABLE_USUARIOS, null, values)
-    }
+        db.insert(DatabaseHelper.TABLE_USUARIOS, null, values) }
+
 
     fun insertarSocio(nombre: String, apellido: String, dni: String, direccion: String, email: String, esSocio: Boolean, aptoFisico: Boolean): Long {
         val db = this.writableDatabase
@@ -122,6 +121,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val success = db.insert(DatabaseHelper.TABLE_SOCIOS, null, values)
         return success
     }
+
 
 
 }
