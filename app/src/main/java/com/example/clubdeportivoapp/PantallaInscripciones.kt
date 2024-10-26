@@ -54,12 +54,18 @@ class PantallaInscripciones : AppCompatActivity() {
             val esSocio = rbSocio.isChecked
             val aptoFisico = checkAptoFisico.isChecked
 
+            if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || direccion.isEmpty() || email.isEmpty()) {
+                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if(rbSocio.isChecked) {
                 Toast.makeText(this, "Opción: Socio", Toast.LENGTH_SHORT).show()
             } else if(rbNoSocio.isChecked){
                 Toast.makeText(this, "Opción: NoSocio", Toast.LENGTH_SHORT).show()
             } else{
                 Toast.makeText(this, "Seleccioná por favor una opción", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             
             val result = databaseHelper.insertarSocio(nombre, apellido, dni, direccion, email, esSocio, aptoFisico)
