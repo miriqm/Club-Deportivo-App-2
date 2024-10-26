@@ -67,9 +67,13 @@ class PantallaInscripciones : AppCompatActivity() {
                 Toast.makeText(this, "Seleccioná por favor una opción", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            if (!aptoFisico) {
+                Toast.makeText(this, "Debes tener el Apto Físico para registrarte", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             
             val result = databaseHelper.insertarSocio(nombre, apellido, dni, direccion, email, esSocio, aptoFisico)
-
 
             if (result != (-1).toLong()) {
                 Toast.makeText(this, "Socio registrado exitosamente", Toast.LENGTH_SHORT).show()
