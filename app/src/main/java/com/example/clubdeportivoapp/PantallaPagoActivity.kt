@@ -15,6 +15,15 @@ class PantallaPagoActivity : AppCompatActivity() {
 
         val btnVolver = findViewById<Button>(btnVolver)
 
+
+
+        btnVolver.setOnClickListener {
+            val intent = Intent(this, PantallaPrincipal::class.java)
+            startActivity(intent)
+        }
+
+
+
         val btnComprobante = findViewById<Button>(R.id.btnComprobante)
 
         btnComprobante.setOnClickListener {

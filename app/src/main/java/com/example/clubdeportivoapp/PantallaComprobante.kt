@@ -12,11 +12,16 @@ class PantallaComprobante : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_pantalla_comprobante)
+
         val btnVolver = findViewById<Button>(btnVolver)
 
         btnVolver.setOnClickListener {
             val intent = Intent(this, PantallaPrincipal::class.java)
             startActivity(intent)
         }
+
+
     }
+
+
 }

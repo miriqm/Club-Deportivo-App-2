@@ -13,20 +13,22 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="275dp"
         android:layout_marginBottom="20dp"
-        tools:srcCompat="@drawable/club_deportivo" />
+        android:src="@drawable/club_deportivo" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="257dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:text="LOGIN"
             android:textSize="20sp" />
 
@@ -43,7 +45,7 @@
             android:id="@+id/txtPass"
             android:layout_width="235dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="30dp"
             android:hint="CONTRASEÑA"
             android:inputType="textPassword"
             android:textSize="15sp" />

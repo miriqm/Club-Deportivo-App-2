@@ -16,6 +16,12 @@
             android:name=".PantallaMorosos"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
+=======
+            android:name=".PantallaCarnet"
+            android:exported="false" />
+        <activity
+>>>>>>> 4dd92b69b536882604bc2938336f372629a1486f
             android:name=".PantallaComprobante"
             android:exported="false" />
         <activity
