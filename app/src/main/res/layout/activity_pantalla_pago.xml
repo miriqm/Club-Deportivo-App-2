@@ -107,21 +107,32 @@
             android:orientation="horizontal"
             android:background="@color/white">
 
-            <CheckBox
-                android:id="@+id/cbEfectivo"
+            <RadioGroup
+                android:id="@+id/rgOptPago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbEfectivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Efectivo" />
 
-            <CheckBox
-                android:id="@+id/cbTarjeta"
+            <RadioButton
+                android:id="@+id/rbTarjeta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Tarjeta" />
 
+            </RadioGroup>
+
         </LinearLayout>
         <!-- Importe Total -->
+
         <EditText
             android:id="@+id/txtMonto"
             android:layout_width="235dp"
