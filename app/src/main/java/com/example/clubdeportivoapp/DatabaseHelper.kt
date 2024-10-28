@@ -11,7 +11,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         //tabla Usuarios
         const val TABLE_USUARIOS = "Usuarios"
         const val COLUMN_ID_USUARIO = "id_usuario"
@@ -32,8 +32,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_ID_PAGO = "id_pago"
         const val COLUMN_ID_SOCIO_PAGO = "id_socio"
         const val COLUMN_TIPO_PAGO = "tipo_pago" //Mensual o Diario
+        const val COLUMN_METODO_PAGO = "metodo_pago"
         const val COLUMN_FECHA_PAGO = "fecha_pago"
         const val COLUMN_MONTO_PAGO = "monto_pago"
+
 
         //Tabla de Carnet
         const val TABLE_CARNET = "Carnet"
@@ -70,9 +72,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val createPagosTable = ("CREATE TABLE " + TABLE_PAGOS + " ("
                 + COLUMN_ID_PAGO + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_ID_SOCIO_PAGO + " INTEGER, "
-                + COLUMN_TIPO_PAGO + " INTEGER, "
+                + COLUMN_TIPO_PAGO + " TEXT, "
+                + COLUMN_METODO_PAGO + " TEXT, "
                 + COLUMN_FECHA_PAGO + " TEXT, "
                 + COLUMN_MONTO_PAGO + " REAL)")
+
         db.execSQL(createPagosTable)
 
         val createCarnetTable = ("CREATE TABLE " + TABLE_CARNET + " ("
@@ -115,13 +119,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             put(COLUMN_DNI, dni)
             put(COLUMN_DIRECCION, direccion)
             put(COLUMN_EMAIL, email)
-            put(COLUMN_ES_SOCIO, if (esSocio) 1 else 0)
+            put(COLUMN_ES_SOCIO,if (esSocio) 1 else 0)
             put(COLUMN_APTO_FISICO, if (aptoFisico) 1 else 0)
     }
         val success = db.insert(DatabaseHelper.TABLE_SOCIOS, null, values)
         return success
     }
-
-
-
 }

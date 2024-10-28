@@ -73,7 +73,8 @@ class PantallaInscripciones : AppCompatActivity() {
                 return@setOnClickListener
             }
             
-            val result = databaseHelper.insertarSocio(nombre, apellido, dni, direccion, email, esSocio, aptoFisico)
+            val result = databaseHelper.insertarSocio(nombre, apellido, dni, direccion, email,
+                esSocio, aptoFisico)
 
             if (result != (-1).toLong()) {
                 Toast.makeText(this, "Socio registrado exitosamente", Toast.LENGTH_SHORT).show()
