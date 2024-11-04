@@ -8,7 +8,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.clubdeportivoapp.R.id.btnRealizarCobro
+import com.example.clubdeportivoapp.R.id.btnPagar
 import com.example.clubdeportivoapp.R.id.btnVolver
 
 class PantallaPagoActivity : AppCompatActivity() {
