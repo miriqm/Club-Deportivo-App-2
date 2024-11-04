@@ -15,14 +15,14 @@ import com.example.clubdeportivoapp.R.id.txtUsuario
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var dbHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         databaseHelper = DatabaseHelper(this)
-         databaseHelper.ingresarUsuario()
+         dbHelper = DatabaseHelper(this)
+         dbHelper.ingresarUsuario()
         val txtUsuario = findViewById<EditText>(txtUsuario)
         val txtPass = findViewById<EditText>(txtPass)
         val btnIngresar = findViewById<Button>(btnIngresar)
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun validarUsuario(usuario: String, contrasena: String): Boolean {
-        val db = databaseHelper.readableDatabase
+        val db = dbHelper.readableDatabase
         val cursor = db.rawQuery(
             "SELECT * FROM " + DatabaseHelper.TABLE_USUARIOS + " WHERE " + DatabaseHelper.COLUMN_NOMBRE_USUARIO + " = ? AND " + DatabaseHelper.COLUMN_CONTRASENA + " = ?",
             arrayOf(usuario, contrasena)

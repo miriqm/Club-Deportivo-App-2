@@ -9,27 +9,16 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.clubdeportivoapp.R.id.btnIngresar
-import com.example.clubdeportivoapp.R.id.btnLimpiar
-import com.example.clubdeportivoapp.R.id.btnVolver
-import com.example.clubdeportivoapp.R.id.checkAptoFisico
-import com.example.clubdeportivoapp.R.id.rbNoSocio
-import com.example.clubdeportivoapp.R.id.rbSocio
-import com.example.clubdeportivoapp.R.id.rgOptions
-import com.example.clubdeportivoapp.R.id.txtApellido
-import com.example.clubdeportivoapp.R.id.txtDNI
-import com.example.clubdeportivoapp.R.id.txtDireccion
-import com.example.clubdeportivoapp.R.id.txtNombre
 import com.example.clubdeportivoapp.R.layout.activity_pantalla_inscripciones
 
 class PantallaInscripciones : AppCompatActivity() {
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var dbHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_pantalla_inscripciones)
 
-        databaseHelper = DatabaseHelper(this)
+        dbHelper = DatabaseHelper(this)
         val btnIngresar = findViewById<Button>(R.id.btnIngresar)
         val txtNombre = findViewById<EditText>(R.id.txtNombre)
         val txtApellido = findViewById<EditText>(R.id.txtApellido)
@@ -73,7 +62,7 @@ class PantallaInscripciones : AppCompatActivity() {
                 return@setOnClickListener
             }
             
-            val result = databaseHelper.insertarSocio(nombre, apellido, dni, direccion, email,
+            val result = dbHelper.insertarSocio(nombre, apellido, dni, direccion, email,
                 esSocio, aptoFisico)
 
             if (result != (-1).toLong()) {

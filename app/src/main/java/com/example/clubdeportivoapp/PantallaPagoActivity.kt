@@ -8,14 +8,18 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.clubdeportivoapp.R.id.btnRealizarCobro
 import com.example.clubdeportivoapp.R.id.btnVolver
 
 class PantallaPagoActivity : AppCompatActivity() {
+
+    private lateinit var dbHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_pantalla_pago)
 
+        dbHelper = DatabaseHelper(this)
 
         val rbEfectivo = findViewById<RadioButton>(R.id.rbEfectivo)
         val rbTarjeta = findViewById<RadioButton>(R.id.rbTarjeta)
@@ -27,12 +31,19 @@ class PantallaPagoActivity : AppCompatActivity() {
         val btnVolver = findViewById<Button>(btnVolver)
 
         btnPagar.setOnClickListener{
+            var metodoPago = ""
             if(rbEfectivo.isChecked){
                 Toast.makeText(this,"Opcion: Efectivo", Toast.LENGTH_SHORT).show()
             } else if(rbTarjeta.isChecked){
                 Toast.makeText(this,"Opcion: Tarjeta", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this,"Selecciona por favor una opcion", Toast.LENGTH_SHORT).show()
+            }
+            val result = dbHelper.agregarMetodoPago(metodoPago)
+            if (result != -1L) {
+                Toast.makeText(this, "Método de pago guardado", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Error al guardar el método de pago", Toast.LENGTH_SHORT).show()
             }
 
             if(monto.isEmpty()){
