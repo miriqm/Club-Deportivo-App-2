@@ -35,14 +35,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_METODO_PAGO = "metodo_pago"
         const val COLUMN_FECHA_PAGO = "fecha_pago"
         const val COLUMN_MONTO_PAGO = "monto_pago"
-
-
         //Tabla de Carnet
         const val TABLE_CARNET = "Carnet"
         const val COLUMN_ID_CARNET = "id_carnet"
         const val COLUMN_ID_SOCIO_CARNET = "id_socio"
         const val COLUMN_FECHA_EMISION_CARNET = "fecha_emision"
-
         //Tabla de Morosos
         const val TABLE_MOROSOS = "Morosos"
         const val COLUMN_ID_MOROSO = "id_moroso"
@@ -105,10 +102,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     fun ingresarUsuario() {
         val db = this.writableDatabase
         val values = ContentValues().apply {
-            put(DatabaseHelper.COLUMN_NOMBRE_USUARIO, "admin")
-            put(DatabaseHelper.COLUMN_CONTRASENA, "1234")
+            put(COLUMN_NOMBRE_USUARIO, "admin")
+            put(COLUMN_CONTRASENA, "1234")
         }
-        db.insert(DatabaseHelper.TABLE_USUARIOS, null, values) }
+        db.insert(TABLE_USUARIOS, null, values) }
 
 
     fun insertarSocio(nombre: String, apellido: String, dni: String, direccion: String, email: String, esSocio: Boolean, aptoFisico: Boolean): Long {
@@ -122,7 +119,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             put(COLUMN_ES_SOCIO,if (esSocio) 1 else 0)
             put(COLUMN_APTO_FISICO, if (aptoFisico) 1 else 0)
     }
-        val success = db.insert(DatabaseHelper.TABLE_SOCIOS, null, values)
+        val success = db.insert(TABLE_SOCIOS, null, values)
+        return success
+    }
+
+    fun agregarMetodoPago(metodo_pago: String): Long {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_METODO_PAGO, metodo_pago)
+        }
+        val success = db.insert(TABLE_PAGOS, null, values)
         return success
     }
 }
