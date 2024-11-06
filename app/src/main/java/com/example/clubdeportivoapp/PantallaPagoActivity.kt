@@ -79,7 +79,6 @@ class PantallaPagoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al guardar el método de pago", Toast.LENGTH_SHORT).show()
             }
 
-
             if (fechaPago.isEmpty()) {
                 Toast.makeText(this, "Por favor, ingresa la fecha de pago.", Toast.LENGTH_SHORT).show()
             }
@@ -88,7 +87,6 @@ class PantallaPagoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Por favor,ingrese el importe a pagar", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
         }
 
         btnComprobante.setOnClickListener {

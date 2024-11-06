@@ -11,7 +11,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         //tabla Usuarios
         const val TABLE_USUARIOS = "Usuarios"
         const val COLUMN_ID_USUARIO = "id_usuario"
@@ -132,23 +132,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.close()
         return exists
     }
-    fun seleccionartipoCliente(tipoCliente: String): Long {
-        val db = this.writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_TIPO_PAGO, tipoCliente)
-        }
-        val success = db.insert(TABLE_PAGOS, null, values)
-        return success
-    }
 
-    fun agregarMetodoPago(metodo_pago: String): Long {
-        val db = this.writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_METODO_PAGO, metodo_pago)
-        }
-        val success = db.insert(TABLE_PAGOS, null, values)
-        return success
-    }
 
     fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, fechaPago: String, monto: String): Long {
         val db = this.writableDatabase
@@ -163,7 +147,4 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         return success
     }
-
-
-
 }
