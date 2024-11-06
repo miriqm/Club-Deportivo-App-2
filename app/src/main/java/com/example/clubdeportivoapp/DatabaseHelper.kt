@@ -11,7 +11,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 1
         //tabla Usuarios
         const val TABLE_USUARIOS = "Usuarios"
         const val COLUMN_ID_USUARIO = "id_usuario"
@@ -31,7 +31,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val TABLE_PAGOS = "Pagos"
         const val COLUMN_ID_PAGO = "id_pago"
         const val COLUMN_ID_SOCIO_PAGO = "id_socio"
-        const val COLUMN_TIPO_PAGO = "tipo_pago" //Mensual o Diario
+        const val COLUMN_TIPO_PAGO = "tipo_Cliente"
         const val COLUMN_METODO_PAGO = "metodo_pago"
         const val COLUMN_FECHA_PAGO = "fecha_pago"
         const val COLUMN_MONTO_PAGO = "monto_pago"
@@ -123,6 +123,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return success
     }
 
+    fun verificarCliente(idCliente: String): Boolean {
+
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM " + TABLE_SOCIOS + " WHERE " + COLUMN_ID_SOCIO + " = '" + idCliente + "'", null)
+        val exists = cursor.moveToFirst()
+
+        cursor.close()
+        return exists
+    }
+    fun seleccionartipoCliente(tipoCliente: String): Long {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+        }
+        val success = db.insert(TABLE_PAGOS, null, values)
+        return success
+    }
+
     fun agregarMetodoPago(metodo_pago: String): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
@@ -131,4 +148,20 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val success = db.insert(TABLE_PAGOS, null, values)
         return success
     }
+
+    fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, monto: String): Long {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_ID_SOCIO, idCliente)
+            put(COLUMN_TIPO_PAGO, tipoCliente)
+            put(COLUMN_METODO_PAGO, metodoPago)
+            put(COLUMN_MONTO_PAGO, monto)
+        }
+        val success = db.insert(TABLE_PAGOS, null, values)
+        db.close()
+        return success
+    }
+
+
+
 }
