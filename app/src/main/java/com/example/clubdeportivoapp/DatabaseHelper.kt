@@ -135,6 +135,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     fun seleccionartipoCliente(tipoCliente: String): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
+            put(COLUMN_TIPO_PAGO, tipoCliente)
         }
         val success = db.insert(TABLE_PAGOS, null, values)
         return success
