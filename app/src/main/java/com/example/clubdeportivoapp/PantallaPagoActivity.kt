@@ -34,9 +34,11 @@ class PantallaPagoActivity : AppCompatActivity() {
         val btnVolver = findViewById<Button>(btnVolver)
         val cbSocio = findViewById<RadioButton>(R.id.cbSocio)
         val cbNoSocio = findViewById<RadioButton>(R.id.cbNoSocio)
+        val txtFecha = findViewById<EditText>(R.id.txtFecha)
 
         btnPagar.setOnClickListener{
             val idCliente = txtIdCliente.text.toString()
+            val fechaPago = txtFecha.text.toString()
             val monto = txtMonto.text.toString()
             if (idCliente.isEmpty()) {
                 Toast.makeText(this, "Por favor, ingrese el ID del cliente", Toast.LENGTH_SHORT)
@@ -69,7 +71,7 @@ class PantallaPagoActivity : AppCompatActivity() {
                 Toast.makeText(this,"Selecciona por favor una opcion", Toast.LENGTH_SHORT).show()
             }
 
-            val result = dbHelper.guardarPago(idCliente, tipoCliente, metodoPago, monto)
+            val result = dbHelper.guardarPago(idCliente, tipoCliente, metodoPago, fechaPago, monto)
 
             if (result != -1L) {
                 Toast.makeText(this, "Método de pago guardado", Toast.LENGTH_SHORT).show()
@@ -77,10 +79,16 @@ class PantallaPagoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al guardar el método de pago", Toast.LENGTH_SHORT).show()
             }
 
+
+            if (fechaPago.isEmpty()) {
+                Toast.makeText(this, "Por favor, ingresa la fecha de pago.", Toast.LENGTH_SHORT).show()
+            }
+
             if(monto.isEmpty()){
                 Toast.makeText(this, "Por favor,ingrese el importe a pagar", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
         }
 
         btnComprobante.setOnClickListener {
