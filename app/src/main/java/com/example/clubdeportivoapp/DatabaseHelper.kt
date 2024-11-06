@@ -150,12 +150,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return success
     }
 
-    fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, monto: String): Long {
+    fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, fechaPago: String, monto: String): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_ID_SOCIO, idCliente)
             put(COLUMN_TIPO_PAGO, tipoCliente)
             put(COLUMN_METODO_PAGO, metodoPago)
+            put(COLUMN_FECHA_PAGO, fechaPago)
             put(COLUMN_MONTO_PAGO, monto)
         }
         val success = db.insert(TABLE_PAGOS, null, values)
