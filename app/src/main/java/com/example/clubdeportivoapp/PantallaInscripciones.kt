@@ -44,21 +44,21 @@ class PantallaInscripciones : AppCompatActivity() {
             val aptoFisico = checkAptoFisico.isChecked
 
             if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty() || direccion.isEmpty() || email.isEmpty()) {
-                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
             if(rbSocio.isChecked) {
-                Toast.makeText(this, "Opción: Socio", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Opción: Socio", Toast.LENGTH_LONG).show()
             } else if(rbNoSocio.isChecked){
-                Toast.makeText(this, "Opción: NoSocio", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Opción: NoSocio", Toast.LENGTH_LONG).show()
             } else{
-                Toast.makeText(this, "Seleccioná por favor una opción", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Seleccioná por favor una opción", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
             if (!aptoFisico) {
-                Toast.makeText(this, "Debes tener el Apto Físico para registrarte", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Debes tener el Apto Físico para registrarte", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             
@@ -66,11 +66,11 @@ class PantallaInscripciones : AppCompatActivity() {
                 esSocio, aptoFisico)
 
             if (result != (-1).toLong()) {
-                Toast.makeText(this, "Socio registrado exitosamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Socio registrado exitosamente", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, PantallaPrincipal::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Error al registrar el socio", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al registrar el socio", Toast.LENGTH_LONG).show()
             }
 
         }

@@ -132,23 +132,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Fecha de Pago"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtFecha"
-            android:layout_width="235dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
-            android:hint="dd/mm/aaaa"
-            android:inputType="date"
-            android:textSize="15sp" />
-
         <!-- Importe Total -->
 
         <EditText

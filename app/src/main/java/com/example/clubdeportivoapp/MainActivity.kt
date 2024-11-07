@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
             val contrasena = txtPass.text.toString()
 
             if (validarUsuario(usuario, contrasena)) {
-                Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, PantallaPrincipal::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
             }
         }
     }
