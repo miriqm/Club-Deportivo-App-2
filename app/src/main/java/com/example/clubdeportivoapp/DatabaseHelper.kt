@@ -11,7 +11,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
         //tabla Usuarios
         const val TABLE_USUARIOS = "Usuarios"
         const val COLUMN_ID_USUARIO = "id_usuario"
@@ -34,6 +34,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_TIPO_PAGO = "tipo_Cliente"
         const val COLUMN_METODO_PAGO = "metodo_pago"
         const val COLUMN_FECHA_PAGO = "fecha_pago"
+        const val COLUMN_FECHA_VENCIMIENTO_PAGO = "fecha_vencimiento"
         const val COLUMN_MONTO_PAGO = "monto_pago"
         //Tabla de Carnet
         const val TABLE_CARNET = "Carnet"
@@ -72,8 +73,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + COLUMN_TIPO_PAGO + " TEXT, "
                 + COLUMN_METODO_PAGO + " TEXT, "
                 + COLUMN_FECHA_PAGO + " TEXT, "
+                + COLUMN_FECHA_VENCIMIENTO_PAGO + " TEXT, "
                 + COLUMN_MONTO_PAGO + " REAL)")
-
         db.execSQL(createPagosTable)
 
         val createCarnetTable = ("CREATE TABLE " + TABLE_CARNET + " ("
@@ -134,17 +135,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
 
-    fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, fechaPago: String, monto: String): Long {
+    fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, fechaPago: String, fechaVencimiento: String, monto: String): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_ID_SOCIO, idCliente)
             put(COLUMN_TIPO_PAGO, tipoCliente)
             put(COLUMN_METODO_PAGO, metodoPago)
             put(COLUMN_FECHA_PAGO, fechaPago)
+            put(COLUMN_FECHA_VENCIMIENTO_PAGO, fechaVencimiento)
             put(COLUMN_MONTO_PAGO, monto)
         }
         val success = db.insert(TABLE_PAGOS, null, values)
         db.close()
         return success
     }
+
 }
