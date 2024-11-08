@@ -15,14 +15,14 @@ import com.example.clubdeportivoapp.R.id.txtUsuario
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var dbHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         databaseHelper = DatabaseHelper(this)
-         databaseHelper.ingresarUsuario()
+         dbHelper = DatabaseHelper(this)
+         dbHelper.ingresarUsuario()
         val txtUsuario = findViewById<EditText>(txtUsuario)
         val txtPass = findViewById<EditText>(txtPass)
         val btnIngresar = findViewById<Button>(btnIngresar)
@@ -32,16 +32,16 @@ class MainActivity : AppCompatActivity() {
             val contrasena = txtPass.text.toString()
 
             if (validarUsuario(usuario, contrasena)) {
-                Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ingreso exitoso", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, PantallaPrincipal::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
             }
         }
     }
     private fun validarUsuario(usuario: String, contrasena: String): Boolean {
-        val db = databaseHelper.readableDatabase
+        val db = dbHelper.readableDatabase
         val cursor = db.rawQuery(
             "SELECT * FROM " + DatabaseHelper.TABLE_USUARIOS + " WHERE " + DatabaseHelper.COLUMN_NOMBRE_USUARIO + " = ? AND " + DatabaseHelper.COLUMN_CONTRASENA + " = ?",
             arrayOf(usuario, contrasena)
