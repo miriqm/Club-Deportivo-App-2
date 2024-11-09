@@ -44,9 +44,7 @@ class PantallaPagoActivity : AppCompatActivity() {
         btnPagar.setOnClickListener{
             val idCliente = txtIdCliente.text.toString()
             val fechaPago = LocalDate.now()
-            val fechaVencimiento = fechaPago.plusMonths(1)
-            val fechaPagoString = fechaPago.toString()
-            val fechaVencimientoString = fechaVencimiento.toString()
+            var fechaVencimiento = fechaPago
             val monto = txtMonto.text.toString()
 
             if (idCliente.isEmpty()) {
@@ -61,6 +59,7 @@ class PantallaPagoActivity : AppCompatActivity() {
             var tipoCliente = ""
             if(cbSocio.isChecked){
                 tipoCliente = "Socio"
+                fechaVencimiento = fechaPago.plusMonths(1)
                 Toast.makeText(this,"Opcion: Socio", Toast.LENGTH_LONG).show()
             } else if(cbNoSocio.isChecked){
                 tipoCliente = "NoSocio"
