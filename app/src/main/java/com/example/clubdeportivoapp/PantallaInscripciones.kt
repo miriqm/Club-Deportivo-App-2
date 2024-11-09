@@ -65,10 +65,13 @@ class PantallaInscripciones : AppCompatActivity() {
             val result = dbHelper.insertarSocio(nombre, apellido, dni, direccion, email,
                 esSocio, aptoFisico)
 
-            if (result != (-1).toLong()) {
+            if (result != (-1L)) {
+                val idSocio = result.toString()
                 Toast.makeText(this, "Socio registrado exitosamente", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, PantallaPrincipal::class.java)
-                startActivity(intent)
+                val intent = Intent(this, PantallaPagoActivity::class.java).apply {
+                    putExtra("idSocio", idSocio)
+                }
+               startActivity(intent)
             } else {
                 Toast.makeText(this, "Error al registrar el socio", Toast.LENGTH_LONG).show()
             }
