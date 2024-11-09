@@ -30,7 +30,9 @@ class PantallaPagoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_pago)
 
         dbHelper = DatabaseHelper(this)
+        val idSocio = intent.getStringExtra("idSocio")
         val txtIdCliente = findViewById<EditText>(R.id.txtIdCliente)
+        txtIdCliente.setText(idSocio)
         val rbEfectivo = findViewById<RadioButton>(R.id.rbEfectivo)
         val rbTarjeta = findViewById<RadioButton>(R.id.rbTarjeta)
         val txtMonto = findViewById<EditText>(R.id.txtMonto)
@@ -87,10 +89,14 @@ class PantallaPagoActivity : AppCompatActivity() {
             val result = dbHelper.guardarPago(idCliente, tipoCliente, metodoPago, fechaPago.toString(), fechaVencimiento.toString(), monto)
 
             if (result != -1L) {
+
                 Toast.makeText(this, "Método de pago guardado", Toast.LENGTH_LONG).show()
+
             } else {
                 Toast.makeText(this, "Error al guardar el método de pago", Toast.LENGTH_LONG).show()
             }
+            val intent = Intent(this, PantallaComprobante::class.java)
+            startActivity(intent)
         }
 
         btnComprobante.setOnClickListener {
