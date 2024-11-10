@@ -7,9 +7,14 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.os.Build
+import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import java.time.LocalDate
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
-
+    private val context: Context = context
     companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
         private const val DATABASE_VERSION = 3
@@ -106,14 +111,39 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
+
     fun ingresarUsuario() {
         val db = this.writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_NOMBRE_USUARIO, "admin")
-            put(COLUMN_CONTRASENA, "1234")
+        val cursor = db.rawQuery(
+            "SELECT * FROM $TABLE_USUARIOS WHERE $COLUMN_NOMBRE_USUARIO = 'admin'",
+            null
+        )
+        val usuarioExiste = cursor.moveToFirst()  // Será true si hay al menos un resultado
+
+        cursor.close()
+
+        if (!usuarioExiste) {
+            val values = ContentValues().apply {
+                put(COLUMN_NOMBRE_USUARIO, "admin")
+                put(COLUMN_CONTRASENA, "1234")
+            }
+
+            db.insert(TABLE_USUARIOS, null, values)
+            Log.d("DBInsert", "Usuario 'admin' insertado en la tabla Usuarios")
+        } else {
+            Log.d("DBInsert", "Usuario 'admin' ya existe.")
         }
-        db.insert(TABLE_USUARIOS, null, values)
     }
+
+
+//    fun ingresarUsuario() {
+//        val db = this.writableDatabase
+//        val values = ContentValues().apply {
+//            put(COLUMN_NOMBRE_USUARIO, "admin")
+//            put(COLUMN_CONTRASENA, "1234")
+//        }
+//        db.insert(TABLE_USUARIOS, null, values)
+//    }
 
 
     fun insertarSocio(nombre: String, apellido: String, dni: String, direccion: String, email: String, esSocio: Boolean, aptoFisico: Boolean): Long {
@@ -176,4 +206,62 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         return nombreCompleto
     }
+
+    // Funcion para pantalla morosos
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getSociosMorosos(context: Context): List<String> {
+        val listaMorosos = mutableListOf<String>()
+        val db = this.readableDatabase
+
+        // Fecha de hoy en formato 'yyyy-MM-dd'
+        val fechaHoy = LocalDate.now()
+
+        // Consulta SQL con JOIN entre PAGOS y SOCIOS
+        val query = """
+        SELECT PAGOS.fecha_vencimiento, PAGOS.monto_pago, SOCIOS.nombre, SOCIOS.apellido, SOCIOS.id_socio
+        FROM $TABLE_PAGOS AS PAGOS
+        JOIN $TABLE_SOCIOS AS SOCIOS
+        ON PAGOS.id_socio = SOCIOS.id_socio
+        WHERE PAGOS.fecha_vencimiento = ?
+        """
+
+        try {
+
+            val cursor = db.rawQuery(query, arrayOf("2023-11-10"))
+
+            // Log para ver si la consulta devuelve datos
+            Log.d("DBQuery", "Consulta ejecutada para fecha: $fechaHoy")
+
+            if (cursor.moveToFirst()) {
+                var count = 0
+                do {
+                    // Obtiene los valores de cada columna y forma una cadena con la información
+                    val fechaVencimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_vencimiento"))
+                    val importe = cursor.getString(cursor.getColumnIndexOrThrow("monto_pago"))
+                    val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
+                    val apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido"))
+                    val idSocio = cursor.getString(cursor.getColumnIndexOrThrow("id_socio"))
+
+                    // Agrega la informacion como una sola cadena en la lista
+                    listaMorosos.add(" $fechaVencimiento - $nombre $apellido -$idSocio - $$importe.-  ")
+                    count++
+                } while (cursor.moveToNext())
+
+
+                Log.d("DBQuery", "Se encontraron $count socios morosos")
+            } else {
+
+                Toast.makeText(context, "No se encontraron socios morosos para la fecha $fechaHoy", Toast.LENGTH_LONG).show()
+                Log.d("DBQuery", "No se encontraron socios morosos para la fecha $fechaHoy")
+            }
+
+            cursor.close()
+        } catch (e: Exception) {
+            Log.e("DBQuery", "Error ejecutando la consulta: ${e.message}")
+        }
+
+        return listaMorosos
+    }
+
 }
