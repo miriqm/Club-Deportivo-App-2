@@ -56,7 +56,6 @@
             android:text="Buscar"
             android:textColor="#FFFFFF"
             android:background="#0066CC"
-            android:layout_marginStart="10dp"
             android:padding="10dp"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -77,7 +76,6 @@
             android:text="CARNET DE SOCIO"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"/>
 
@@ -88,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:hint="Nombre"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:minHeight="48dp"
             android:textAlignment="center" />
 
