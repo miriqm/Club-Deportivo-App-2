@@ -36,7 +36,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="10dp"
-        android:background="@color/cardview_light_background"
+        android:background="#F0ECEC"
         >
         <!-- Layout Nombre -->
         <LinearLayout
@@ -56,15 +56,12 @@
                 android:layout_width="235dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:hint="Ingrese el nombre"
                 android:textColorHint="#A6A5A5"
-                android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
+                android:textSize="15sp" />
         </LinearLayout>
 
-        <!--Layout Numero de Socio -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,12 +79,10 @@
                 android:layout_width="235dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:hint="Ingrese el Id de socio"
                 android:textColorHint="#A6A5A5"
-                android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
+                android:textSize="15sp" />
         </LinearLayout>
     <!-- Layout Fecha Pago -->
         <LinearLayout
@@ -110,12 +105,11 @@
                 android:layout_width="235dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:hint="Ingrese la fecha de pago"
                 android:textColorHint="#A6A5A5"
-                android:textSize="15sp"
-                tools:ignore="TextContrastCheck" />
+                android:textSize="15sp" />
+
         </LinearLayout>
 
         <!-- Layout Monto -->
@@ -138,7 +132,6 @@
                 android:layout_width="235dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:hint="Ingrese el monto"
                 android:textColorHint="#A6A5A5"
