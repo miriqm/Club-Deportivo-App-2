@@ -6,19 +6,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.clubdeportivoapp.R.id.btnPagar
 import com.example.clubdeportivoapp.R.id.btnVolver
-import com.example.clubdeportivoapp.R.id.cbSocio
-import com.example.clubdeportivoapp.R.id.rbNoSocio
-import com.example.clubdeportivoapp.R.id.rbSocio
-import com.example.clubdeportivoapp.R.id.txtIdCliente
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 class PantallaPagoActivity : AppCompatActivity() {
 
@@ -96,6 +88,9 @@ class PantallaPagoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al guardar el método de pago", Toast.LENGTH_LONG).show()
             }
             val intent = Intent(this, PantallaComprobante::class.java)
+            intent.putExtra("idSocio", idSocio)
+            intent.putExtra("fechaPago", fechaPago.toString())
+            intent.putExtra("monto", monto)
             startActivity(intent)
         }
 
