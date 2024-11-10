@@ -8,98 +8,55 @@
     android:background="#EDE499"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="10dp"
     tools:context=".PantallaPrincipal">
 
     <TextView
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:text="Club Deportivo"
         android:textSize="25sp"
         android:textStyle="bold"
         />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnInscribir"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F0E68B"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
+        android:layout_margin="10dp"
+        android:text="Inscribir"
+        />
 
-        <Button
-            android:id="@+id/btnInscribir"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="Inscribir"
-            />
+    <Button
+        android:id="@+id/btnPagarCuota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Pagar Cuota" />
 
-        <Button
-            android:id="@+id/btnAsigActividad"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="Asignar Actividad"
-             />
+    <Button
+        android:id="@+id/btnEmitirCarnet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Emitir Carnet" />
+
+    <Button
+        android:id="@+id/btnMorosos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Morosos" />
+
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:backgroundTint="#7D51CA"
+        android:text="Salir" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#F0E68B"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnPagarCuota"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="Pagar Cuota" />
-
-        <Button
-            android:id="@+id/btnEmitirCarnet"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="Emitir Carnet" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#F0E68B"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnMorosos"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="Morosos" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#F0E68B"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnSalir"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="Salir" />
-
-    </LinearLayout>
-</LinearLayout>
