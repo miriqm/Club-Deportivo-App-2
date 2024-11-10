@@ -7,11 +7,15 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.icu.text.SimpleDateFormat
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import java.sql.Date
 import java.time.LocalDate
+import java.time.LocalDate.now
+import java.util.Locale
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     private val context: Context = context
@@ -209,13 +213,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     // Funcion para pantalla morosos
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getSociosMorosos(context: Context): List<String> {
+    fun getSociosMorosos(): List<String> {
         val listaMorosos = mutableListOf<String>()
         val db = this.readableDatabase
 
-        // Fecha de hoy en formato 'yyyy-MM-dd'
-        val fechaHoy = LocalDate.now()
+        // Fecha de hoy en formato 'yyyy-MM-dd' -
+        //val fechaHoy : LocalDate = LocalDate.now()
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val fechaHoy = dateFormat.format(java.util.Date())
 
         // Consulta SQL con JOIN entre PAGOS y SOCIOS
         val query = """
@@ -223,16 +229,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         FROM $TABLE_PAGOS AS PAGOS
         JOIN $TABLE_SOCIOS AS SOCIOS
         ON PAGOS.id_socio = SOCIOS.id_socio
-        WHERE PAGOS.fecha_vencimiento = ?
+        WHERE SOCIOS.es_socio = 1 AND PAGOS.fecha_vencimiento = ? 
         """
 
         try {
-
-            val cursor = db.rawQuery(query, arrayOf("2023-11-10"))
-
-            // Log para ver si la consulta devuelve datos
-            Log.d("DBQuery", "Consulta ejecutada para fecha: $fechaHoy")
-
+            val cursor = db.rawQuery(query, arrayOf("fechaHoy"))
+          //val cursor = db.rawQuery(query, arrayOf("2024-12-10"))
             if (cursor.moveToFirst()) {
                 var count = 0
                 do {
@@ -244,23 +246,20 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     val idSocio = cursor.getString(cursor.getColumnIndexOrThrow("id_socio"))
 
                     // Agrega la informacion como una sola cadena en la lista
-                    listaMorosos.add(" $fechaVencimiento - $nombre $apellido -$idSocio - $$importe.-  ")
+                    listaMorosos.add("$fechaVencimiento  -  $nombre $apellido  -  $idSocio  -     $$importe.-  ")
                     count++
                 } while (cursor.moveToNext())
 
 
                 Log.d("DBQuery", "Se encontraron $count socios morosos")
             } else {
-
                 Toast.makeText(context, "No se encontraron socios morosos para la fecha $fechaHoy", Toast.LENGTH_LONG).show()
-                Log.d("DBQuery", "No se encontraron socios morosos para la fecha $fechaHoy")
             }
 
             cursor.close()
         } catch (e: Exception) {
             Log.e("DBQuery", "Error ejecutando la consulta: ${e.message}")
         }
-
         return listaMorosos
     }
 

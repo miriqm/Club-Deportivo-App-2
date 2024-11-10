@@ -15,7 +15,7 @@ import com.example.clubdeportivoapp.R.id.btnVolver
 
 
 class PantallaMorosos : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,7 +27,7 @@ class PantallaMorosos : AppCompatActivity() {
          databaseHelper = DatabaseHelper(this)  // Inicializa DatabaseHelper
          lvMorosos = findViewById(R.id.lvSociosMorosos)
 
-         val listaMorosos = databaseHelper.getSociosMorosos(this)
+         val listaMorosos = databaseHelper.getSociosMorosos()
          val morososAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1, listaMorosos)
 
          lvMorosos.adapter = morososAdapter
