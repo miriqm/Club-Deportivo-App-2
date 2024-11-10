@@ -2,6 +2,7 @@
 
 package com.example.clubdeportivoapp
 
+
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -12,11 +13,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
         private const val DATABASE_VERSION = 3
+
         //tabla Usuarios
         const val TABLE_USUARIOS = "Usuarios"
         const val COLUMN_ID_USUARIO = "id_usuario"
         const val COLUMN_NOMBRE_USUARIO = "nombre_usuario"
         const val COLUMN_CONTRASENA = "contrasena"
+
         //tabla socio/noSocio
         const val TABLE_SOCIOS = "Socios"
         const val COLUMN_ID_SOCIO = "id_socio"
@@ -27,6 +30,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_EMAIL = "email"
         const val COLUMN_ES_SOCIO = "es_socio"
         const val COLUMN_APTO_FISICO = "apto_fisico"
+
         //tabla pagos
         const val TABLE_PAGOS = "Pagos"
         const val COLUMN_ID_PAGO = "id_pago"
@@ -36,11 +40,13 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_FECHA_PAGO = "fecha_pago"
         const val COLUMN_FECHA_VENCIMIENTO_PAGO = "fecha_vencimiento"
         const val COLUMN_MONTO_PAGO = "monto_pago"
+
         //Tabla de Carnet
         const val TABLE_CARNET = "Carnet"
         const val COLUMN_ID_CARNET = "id_carnet"
         const val COLUMN_ID_SOCIO_CARNET = "id_socio"
         const val COLUMN_FECHA_EMISION_CARNET = "fecha_emision"
+
         //Tabla de Morosos
         const val TABLE_MOROSOS = "Morosos"
         const val COLUMN_ID_MOROSO = "id_moroso"
@@ -106,7 +112,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             put(COLUMN_NOMBRE_USUARIO, "admin")
             put(COLUMN_CONTRASENA, "1234")
         }
-        db.insert(TABLE_USUARIOS, null, values) }
+        db.insert(TABLE_USUARIOS, null, values)
+    }
 
 
     fun insertarSocio(nombre: String, apellido: String, dni: String, direccion: String, email: String, esSocio: Boolean, aptoFisico: Boolean): Long {
@@ -119,7 +126,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             put(COLUMN_EMAIL, email)
             put(COLUMN_ES_SOCIO,if (esSocio) 1 else 0)
             put(COLUMN_APTO_FISICO, if (aptoFisico) 1 else 0)
-    }
+        }
         val success = db.insert(TABLE_SOCIOS, null, values)
         return success
     }
@@ -127,13 +134,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     fun verificarCliente(idCliente: String): Boolean {
 
         val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM " + TABLE_SOCIOS + " WHERE " + COLUMN_ID_SOCIO + " = '" + idCliente + "'", null)
+        val cursor = db.rawQuery(
+            "SELECT * FROM " + TABLE_SOCIOS + " WHERE " + COLUMN_ID_SOCIO + " = '" + idCliente + "'",
+            null
+        )
         val exists = cursor.moveToFirst()
 
         cursor.close()
         return exists
     }
-
 
     fun guardarPago(idCliente: String, tipoCliente: String, metodoPago: String, fechaPago: String, fechaVencimiento: String, monto: String): Long {
         val db = this.writableDatabase
@@ -150,4 +159,21 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return success
     }
 
+    fun obtenerNombreCompleto(idSocio: String): String {
+        var nombreCompleto = ""
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT $COLUMN_NOMBRE, $COLUMN_APELLIDO FROM $TABLE_SOCIOS WHERE $COLUMN_ID_SOCIO = ?", arrayOf(idSocio))
+
+        if (cursor.moveToFirst()) {
+
+            val nombre = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE))
+            val apellido = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APELLIDO))
+
+            nombreCompleto = "$nombre $apellido"
+        }
+
+        cursor.close()
+        db.close()
+        return nombreCompleto
+    }
 }
