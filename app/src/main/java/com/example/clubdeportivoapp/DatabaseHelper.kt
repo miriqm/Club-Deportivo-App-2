@@ -5,16 +5,12 @@ package com.example.clubdeportivoapp
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.icu.text.SimpleDateFormat
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import java.sql.Date
-import java.time.LocalDate
-import java.time.LocalDate.now
 import java.util.Locale
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -263,4 +259,18 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return listaMorosos
     }
 
+    fun obtenerDatosSocio(dni: String): Cursor? {
+        val db = this.readableDatabase
+        val query = """
+        SELECT SOCIOS.$COLUMN_NOMBRE, SOCIOS.$COLUMN_APELLIDO, SOCIOS.$COLUMN_ID_SOCIO, PAGOS.$COLUMN_FECHA_PAGO 
+        FROM $TABLE_SOCIOS AS SOCIOS
+        INNER JOIN $TABLE_PAGOS AS PAGOS
+        ON SOCIOS.$COLUMN_ID_SOCIO = PAGOS.$COLUMN_ID_SOCIO
+        WHERE SOCIOS.$COLUMN_DNI = ?
+    """
+        return db.rawQuery(query, arrayOf(dni))
+    }
 }
+
+
+
